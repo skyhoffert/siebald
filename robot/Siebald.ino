@@ -3,6 +3,8 @@
 // Modified:  2016_1108
 // Modified By: Sky Hoffert
 
+#include <Servo.h>
+
 // constants
 // sensors
 #define sensor_us_trig 2
@@ -32,6 +34,8 @@
 #define motor_R_slow 50
 #define motor_stop 0
 
+Servo servo_us;
+
 void setup(){
   // set pin modes
   // ultrasonic sensor
@@ -39,7 +43,7 @@ void setup(){
   pinMode(sensor_us_echo, INPUT);
 
   // servo
-  pinMode(servo_sensor_us, OUTPUT);
+  servo_us.attach(3);
 
   // motors
   pinMode(motor_L_1, OUTPUT);
@@ -54,14 +58,15 @@ void setup(){
   // other
   pinMode(LED_BUILTIN, OUTPUT);
   //Serial.begin (9600);
-    
+  
   // analog pins
-  analogWrite(servo_sensor_us, 175);
   analogWrite(motor_L_1, motor_stop);
   analogWrite(motor_L_2, motor_stop);
   analogWrite(motor_R_1, motor_stop);
   analogWrite(motor_R_2, motor_stop);
 
+  // servos
+  servo_us.write(0);
 }
 
 void loop(){
