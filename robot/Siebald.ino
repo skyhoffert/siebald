@@ -33,11 +33,15 @@
 #define motor_stop 0
 
 void setup(){
+	// set pin modes
+	// ultrasonic sensor
 	pinMode(sensor_us_trig, OUTPUT);
 	pinMode(sensor_us_echo, INPUT);
 
+	// servo
 	pinMode(servo_sensor_us, OUTPUT);
 
+	// motors
 	pinMode(motor_L_1, OUTPUT);
 	pinMode(motor_L_2, OUTPUT);
 	pinMode(motor_R_1, OUTPUT);
@@ -56,4 +60,5 @@ void setup(){
 }
 
 void loop(){
+	// do stuff
 }
