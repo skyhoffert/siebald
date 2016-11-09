@@ -21,17 +21,17 @@
 
 // speeds
 // servo position
-#define servo_sensor_us_center 128
-#define servo_sensor_us_left 100
-#define servo_sensor_us_right 156
+#define servo_sensor_us_center 90
+#define servo_sensor_us_left 50
+#define servo_sensor_us_right 140
 
 // motor speeds
-#define motor_L_full 200
+#define motor_L_full 255
 #define motor_L_half 100
 #define motor_L_slow 50
-#define motor_R_full 200
+#define motor_R_full 255
 #define motor_R_half 100
-#define motor_R_slow 50
+#define motor_R_slow 75
 #define motor_stop 0
 
 Servo servo_us;
@@ -57,7 +57,7 @@ void setup(){
 
   // other
   pinMode(LED_BUILTIN, OUTPUT);
-  //Serial.begin (9600);
+  Serial.begin (9600);
   
   // analog pins
   analogWrite(motor_L_1, motor_stop);
@@ -66,7 +66,7 @@ void setup(){
   analogWrite(motor_R_2, motor_stop);
 
   // servos
-  servo_us.write(0);
+  servo_us.write(90);
 }
 
 void loop(){
@@ -90,10 +90,18 @@ void loop(){
   }
   if (distance >= 200 || distance <= 0){
     Serial.println("Out of range");
+
+    // testing
+    analogWrite(motor_R_1, 250);
+    analogWrite(motor_R_2, motor_stop);
   }
   else {
     Serial.print(distance);
     Serial.println(" cm");
+
+    // testing
+    analogWrite(motor_R_1, motor_stop);
+    analogWrite(motor_R_2, motor_stop);
   }
   delay(100);
 }
